@@ -1,0 +1,22 @@
+#WebHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(7, 7, 172);
+}
+#WebHeader h1{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+    margin: 1%;
+}
+#loginout{
+    text-align: right ;
+    margin: 0%;
+    width: 20%;
+}
+
+#Login, #Registro {
+    color: white;
+    margin: 10%;
+}
