@@ -207,4 +207,75 @@ footer {
     .view-section {
         padding: 15px;
     }
+
+    /*Estilos de gestion de usuarios*/
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    
+    th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+    
+    th {
+        background-color: #007bff;
+        color: white;
+    }
+    
+    button {
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+    }
+    
+    button:first-child {
+        background-color: #28a745;
+        color: white;
+    }
+    
+    button:last-child {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    /*Estilos de panel medico*/
+    /* Estilos para tablas en general */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Mejorando el diseño de los encabezados */
+th {
+    background-color: #1e3a8a; /* Azul */
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+td {
+    color: #333;
+}
+
+/* Agregar efecto hover a las filas */
+tr:hover {
+    background-color: #f1f5f9;
+}
+
+    
 }
