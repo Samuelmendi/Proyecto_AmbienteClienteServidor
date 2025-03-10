@@ -19,7 +19,7 @@
         <ul>
             <li><a href="index.php">Inicio</a></li>
             <li><a href="views/agendarCita.php">Agendar Cita</a></li>
-            <li><a href="views/gestionUsuario.php">Gestión de Usuarios</a></li>
+            <li><a href="views/gestionUsuarios.php">Gestión de Usuarios</a></li>
             <li><a href="views/panelMedico.php">Panel Médico</a></li>
             <li><a href="views/panelPaciente.php">Panel Paciente</a></li>
         </ul>
