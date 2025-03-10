@@ -11,8 +11,8 @@
         <div id = "WebHeader">
             <h1>Medicare</h1>
             <div id = "loginout">
-                <a href="Login-registro/Log-in.php" id="Login">Log-in</a>
-                <a href="Login-registro/registro.php" id="Registro">Registro</a>
+                <a href="Log-in.php" id="Login">Log-in</a>
+                <a href="registro.php" id="Registro">Registro</a>
             </div>
         </div>
         <h2>Bienvenidos</h2>
