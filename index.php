@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MediCare</title>
     <link rel="stylesheet" href="css/stylesheet.css">
 </head>
 
 <body>
-    <div id="WebHeader">
-        <h1><a href="index.php" id="TitulodePagina">MediCare</a></h1>
-        <div id="loginout">
-            <a href="Login-registro/Log-in.php" id="Login">Log-in</a>
-            <a href="Login-registro/registro.php" id="Registro">Registro</a>
-        </div>
+<div id="WebHeader">
+<a href="index.php" id="LogoContainer">
+    <img src="assets\img\logo.png" alt="MediCare Logo" id="LogoMedicare">
+</a>
+    <div id="loginout">
+        <a href="Login-registro/Log-in.php" id="Login">Log-in</a>
+        <a href="Login-registro/registro.php" id="Registro">Registro</a>
     </div>
+</div>
+
 
     <nav>
         <ul>
@@ -25,27 +30,29 @@
         </ul>
     </nav>
 
-    <h2>Bienvenidos</h2>
+    <div class="container">
+        <h2>Bienvenidos</h2>
 
-    <div>
-        <h2>Características principales</h2>
-        <div id="Caracteristicas">
-            <ul>
-                <li>Gestión de citas médicas</li>
-                <li>Administración de usuarios</li>
-                <li>Panel especializado para médicos</li>
-            </ul>
-            <ul>
-                <li>Portal de pacientes</li>
-                <li>Seguridad de datos</li>
-                <li>Interfaz intuitiva</li>
-            </ul>
-        </div>
-    </div>
+        <section class="view-section">
+            <h2>Características principales</h2>
+            <div id="Caracteristicas" style="display: flex; gap: 40px;">
+                <ul>
+                    <li>Gestión de citas médicas</li>
+                    <li>Administración de usuarios</li>
+                    <li>Panel especializado para médicos</li>
+                </ul>
+                <ul>
+                    <li>Portal de pacientes</li>
+                    <li>Seguridad de datos</li>
+                    <li>Interfaz intuitiva</li>
+                </ul>
+            </div>
+        </section>
 
-    <div>
-        <h2>Sobre Nosotros</h2>
-        <p>Somos una plataforma innovadora diseñada para optimizar la gestión médica...</p>
+        <section class="view-section">
+            <h2>Sobre Nosotros</h2>
+            <p>Somos una plataforma innovadora diseñada para optimizar la gestión médica, facilitando el acceso y la administración de la atención para médicos y pacientes.</p>
+        </section>
     </div>
 
     <footer>
@@ -53,5 +60,4 @@
     </footer>
 
 </body>
-
 </html>
