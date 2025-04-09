@@ -26,9 +26,7 @@ h1, h2 {
 }
 
 #WebHeader h1 {
-    color: #ffffff;
-    font-size: 32px; /* Aumentado un poco para destacar */
-    font-weight: 700; /* Peso más bold para el logo */
+    color: white;
     margin: 0;
     letter-spacing: 2px; /* Espaciado para que se vea elegante */
 }
@@ -178,6 +176,11 @@ footer {
 .footer-container {
     max-width: 900px;
     margin: 0 auto;
+}
+
+/* ------------- Log-in ---------------- */
+#LogInSection{
+    padding: 50px;
 }
 
 /* ---------- Responsive Design ---------- */

@@ -8,7 +8,7 @@
 
 <body>
     <div id="WebHeader">
-        <h1>MediCare</h1>
+        <h1><a href="index.php" id="TitulodePagina">MediCare</a></h1>
         <div id="loginout">
             <a href="Login-registro/Log-in.php" id="Login">Log-in</a>
             <a href="Login-registro/registro.php" id="Registro">Registro</a>
