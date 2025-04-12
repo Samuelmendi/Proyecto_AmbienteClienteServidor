@@ -138,3 +138,19 @@ footer {
 #LogInSection{
     padding: 50px;
 }
+
+
+/* ------------- Registro ---------------- */
+
+.RadioButtons{
+    display: flex;
+    flex-direction: row;
+}
+
+#RadioPaciente{
+    grid-column: 1;
+}
+
+#RadioMedico{
+    grid-column: 2;
+}
