@@ -4,9 +4,10 @@
 
 <head>
     <title>MediCare</title>
-    <link rel="stylesheet" href="../css/stylesheet.css">
-    <link rel="script" href="../js/registroScript.js">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/registroScript.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/stylesheet.css">
 </head>
 
 <body>
@@ -61,7 +62,7 @@
 
                 <section class="RadioButtons">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="radioOpcion" id="RadioPaciente" checked>
+                        <input class="form-check-input" type="radio" name="radioOpcion" id="RadioPaciente" value="paciente" checked>
                         <label class="form-check-label" for="RadioPaciente">
                             Paciente              
                         </label>
@@ -70,7 +71,7 @@
                     <div style="margin: 20px"></div>
             
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="radioOpcion" id="RadioMedico">
+                        <input class="form-check-input" type="radio" name="radioOpcion" id="RadioMedico" value="medico">
                         <label class="form-check-label" for="RadioMedico">
                             Medico
                         </label>
@@ -81,7 +82,7 @@
 
                 <!-- Register button -->
                 <button type="button" data-mdb-button-init data-mdb-ripple-init
-                    class="btn btn-primary btn-block mb-4">Registrar</button>
+                    class="btn btn-primary btn-block mb-4" id="RegistrarBtn">Registrar</button>
             </form>
         </div>
     </section>
