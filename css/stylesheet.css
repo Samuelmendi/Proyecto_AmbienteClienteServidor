@@ -145,12 +145,11 @@ footer {
 .RadioButtons{
     display: flex;
     flex-direction: row;
+    padding: 30px;
 }
 
-#RadioPaciente{
-    grid-column: 1;
+.RadioButtons div{
+    padding-right: 30px;
 }
 
-#RadioMedico{
-    grid-column: 2;
-}
+

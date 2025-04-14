@@ -5,6 +5,7 @@
 <head>
     <title>MediCare</title>
     <link rel="stylesheet" href="../css/stylesheet.css">
+    <link rel="script" href="../js/registroScript.js">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -60,15 +61,16 @@
 
                 <section class="RadioButtons">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Paciente" id="RadioPaciente"
-                            checked>
+                        <input class="form-check-input" type="radio" name="radioOpcion" id="RadioPaciente" checked>
                         <label class="form-check-label" for="RadioPaciente">
-                            Paciente
+                            Paciente              
                         </label>
                     </div>
 
+                    <div style="margin: 20px"></div>
+            
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Medico" id="RadioMedico">
+                        <input class="form-check-input" type="radio" name="radioOpcion" id="RadioMedico">
                         <label class="form-check-label" for="RadioMedico">
                             Medico
                         </label>
