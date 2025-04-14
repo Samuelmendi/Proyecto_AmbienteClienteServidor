@@ -145,11 +145,9 @@ footer {
 .RadioButtons{
     display: flex;
     flex-direction: row;
-    padding: 30px;
 }
 
 .RadioButtons div{
-    padding-right: 30px;
 }
 
 
