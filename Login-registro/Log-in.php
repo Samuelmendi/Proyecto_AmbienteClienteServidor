@@ -4,8 +4,8 @@
 
 <head>
     <title>MediCare</title>
-    <link rel="stylesheet" href="../css/stylesheet.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/stylesheet.css">
 </head>
 
 <body>
@@ -21,10 +21,10 @@
             <h1 id="BienvenidoLogin">Bienvenido</h1>
             <br>
             <form>
-                <!-- Email input -->
+                <!-- username input -->
                 <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="email" id="form2Example1" class="form-control" />
-                    <label class="form-label" for="form2Example1">Email address</label>
+                    <input type="text" id="form2Example1" class="form-control" />
+                    <label class="form-label" for="form2Example1">Nombre de usuario</label>
                 </div>
 
                 <!-- Password input -->
