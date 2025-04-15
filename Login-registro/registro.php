@@ -81,8 +81,8 @@
                 <br>
 
                 <!-- Register button -->
-                <button type="button" data-mdb-button-init data-mdb-ripple-init
-                    class="btn btn-primary btn-block mb-4" id="RegistrarBtn">Registrar</button>
+                <button id="RegistrarBtn" type="button" data-mdb-button-init data-mdb-ripple-init
+                    class="btn btn-primary btn-block mb-4" >Registrar</button>
             </form>
         </div>
     </section>

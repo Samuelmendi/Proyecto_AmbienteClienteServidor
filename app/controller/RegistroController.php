@@ -1,5 +1,5 @@
 <?php
-require_once '../models/Receta.php';
+require_once '../models/RegistroDB.php';
 
 header('Content-Type: application/json');
 

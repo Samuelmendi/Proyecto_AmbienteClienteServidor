@@ -1,16 +1,20 @@
 <?php
 require_once '../../config/database.php';
 
-class RegistroDB{
+class RegistroDB
+{
 
-    public static function add($nombre, $apellido, $telefono, $correo, $contrasena, $tipo){
+    public static function add($nombre, $apellido, $telefono, $correo, $password, $tipo)
+    {
         global $conn;
 
-        $sql = "INSERT INTO usuarios VALUES ('$nombre', '$apellido', '$telefono', '$correo', '$contrasena', '$tipo')";
+        $contrasena = password_hash($password, PASSWORD_BCRYPT);
 
-        if($conn->query($sql) === TRUE){
+        $sql = "INSERT INTO usuarios (nombre, apellidos, correo, contrasena, telefono, tipo) VALUES ('$nombre', '$apellido', '$telefono', '$correo', '$contrasena', '$tipo')";
+
+        if ($conn->query($sql) === TRUE) {
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }
