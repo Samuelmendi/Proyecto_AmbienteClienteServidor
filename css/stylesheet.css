@@ -1,153 +1,248 @@
 /* ---------- Estilos Generales ---------- */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #eef3f7; /* Tono médico claro */
+    color: #2c3e50;
+    line-height: 1.6;
 }
 
+/* ---------- Encabezados ---------- */
 h1, h2 {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: #333;
+    font-weight: 700;
+    color: #2a4365; /* Azul serio */
 }
 
 /* ---------- Header ---------- */
 #WebHeader {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(7, 7, 172);
-    padding: 10px 20px;
+    background: linear-gradient(90deg, #2a4365, #3182ce);
+    padding: 20px 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
 }
 
-#TitulodePagina {
-    color: white;
+#LogoContainer {
+    display: flex;
+    align-items: center;
     text-decoration: none;
-    margin: 0;
 }
 
+#LogoMedicare {
+    height: 120px; /* Aumenté el tamaño del logo a 120px */
+    object-fit: contain;
+    border-radius: 8px;
+    filter: contrast(1.2); /* Mantengo el contraste */
+}
+
+/* ---------- Login y Registro ---------- */
 #loginout {
-    text-align: right;
-    width: 20%;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #Login, #Registro {
-    color: white;
+    color: #ffffff;
     text-decoration: none;
-    margin: 10px;
-    font-weight: bold;
+    font-weight: 500;
+    transition: all 0.3s;
 }
 
 #Login:hover, #Registro:hover {
-    text-decoration: underline;
+    color: #cce4ff;
 }
 
 /* ---------- Navegación ---------- */
 nav {
-    background-color: #1a237e;
-    padding: 10px;
+    background-color: #63b3ed; /* Azul más claro */
+    padding: 10px 0;
 }
 
 nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    list-style: none;
     display: flex;
     justify-content: center;
-}
-
-nav ul li {
-    margin: 0 15px;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
 }
 
 nav ul li a {
-    text-decoration: none;
     color: white;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 10px;
-    transition: background 0.3s;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
 nav ul li a:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
+    background-color: #2b6cb0;
+    transform: scale(1.05);
 }
 
-/* ---------- Contenido Principal ---------- */
+/* ---------- Contenedor Principal ---------- */
 .container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-width: 960px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
 }
 
-/* ---------- Secciones de Views ---------- */
+/* ---------- Secciones ---------- */
 .view-section {
-    padding: 20px;
-    margin-bottom: 20px;
-    background-color: #ffffff;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    padding: 25px;
+    background-color: #f7fafc;
+    border-left: 6px solid #4299e1;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.view-section:hover {
+    transform: translateY(-3px);
 }
 
 .view-section h2 {
-    color: #1a237e;
-    margin-bottom: 15px;
+    color: #2b6cb0;
 }
 
-/* ---------- Botón General ---------- */
+/* ---------- Formularios ---------- */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    background: #ffffff;
+    transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #3182ce;
+    box-shadow: 0 0 6px rgba(49, 130, 206, 0.3);
+}
+
+/* ---------- Botones ---------- */
 .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
+    background: linear-gradient(90deg, #3182ce, #2b6cb0);
     color: white;
-    background-color: #007BFF;
     border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    text-align: center;
-    transition: background 0.3s;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 /* ---------- Footer ---------- */
 footer {
-    background-color: #2c3e50; /* Azul oscuro */
-    color: #ecf0f1; /* Blanco grisáceo */
+    background: #2a4365;
+    color: #e2e8f0;
     text-align: center;
-    padding: 15px 0;
-    position: relative;
-    width: 100%;
-    bottom: 0;
+    padding: 20px;
     font-size: 14px;
 }
 
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
+/* ---------- Login Section ---------- */
+#LogInSection {
+    padding: 50px 20px;
 }
 
-/* ------------- Log-in ---------------- */
-#LogInSection{
-    padding: 50px;
+/* ---------- Tablas ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-
-/* ------------- Registro ---------------- */
-
-.RadioButtons{
-    display: flex;
-    flex-direction: row;
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #e2e8f0;
 }
 
-.RadioButtons div{
+th {
+    background-color: #2b6cb0;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
+tr:hover {
+    background-color: #f1f5f9;
+}
 
+button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+button:first-child {
+    background-color: #38a169; /* Verde */
+}
+
+button:last-child {
+    background-color: #e53e3e; /* Rojo */
+}
+
+/* ---------- Responsive Design ---------- */
+@media (max-width: 768px) {
+    #WebHeader {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #loginout {
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .view-section {
+        padding: 20px;
+    }
+
+    #LogoMedicare {
+        height: 80px; /* Ajusté el tamaño para pantallas pequeñas a 80px */
+        filter: contrast(1.2); /* Mantengo el contraste */
+    }
+}
