@@ -1,10 +1,10 @@
 <?php
-require_once '../models/RegistroDB.php';
+require_once '../modelos/RegistroDB.php';
 
 header('Content-Type: application/json');
 
 try{
-    if($_SERVER['Request_METHOD'] === 'POST'){
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $data = json_decode(file_get_contents("php://input"), true);
         $action = $data['action'] ?? '';
 

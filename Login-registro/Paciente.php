@@ -20,9 +20,8 @@
             <h1 id="RegistroPaciente">Registro Paciente</h1>
             <br>
             <br>
-            <form class="RegistroForm">
-        
-
+            <form class="RegistroForm"> 
+                
                 <!-- Date input -->
                 <div>
                     <input type="date" id="birthday" name="birthday">

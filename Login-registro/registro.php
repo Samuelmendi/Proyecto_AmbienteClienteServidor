@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 
+<?php session_start();?>
+
 <html>
 
 <head>
@@ -81,7 +83,7 @@
                 <br>
 
                 <!-- Register button -->
-                <button id="RegistrarBtn" type="button" data-mdb-button-init data-mdb-ripple-init
+                <button id="RegistrarBtn" type="submit" data-mdb-button-init data-mdb-ripple-init
                     class="btn btn-primary btn-block mb-4" >Registrar</button>
             </form>
         </div>
