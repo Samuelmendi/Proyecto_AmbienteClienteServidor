@@ -183,7 +183,6 @@ table {
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-
 th, td {
     padding: 12px;
     border-bottom: 1px solid #e2e8f0;
@@ -247,13 +246,3 @@ button:last-child {
         filter: contrast(1.2); /* Mantengo el contraste */
     }
 }
-
-/* ------------- Registro ---------------- */
-
-.RadioButtons{
-    display: flex;
-    flex-direction: row;
-}
-
-
-
