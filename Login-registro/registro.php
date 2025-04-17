@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 
-<?php session_start();?>
-
 <html>
 
 <head>
@@ -46,8 +44,8 @@
 
                 <!-- Email input -->
                 <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="email" id="RegistroCorreo" class="form-control" />
-                    <label class="form-label" for="correo">Correo Electronico</label>
+                    <input type="email" id="RegistroCorreo" class="form-control" name="correo" />
+                    <label class="form-label" for="RegistroCorreo">Correo Electronico</label>
                 </div>
 
                 <!-- Password input -->
@@ -59,19 +57,20 @@
                 <!-- Password confirmation input -->
                 <div data-mdb-input-init class="form-outline mb-4">
                     <input type="password" id="ConfirmaContraseña" class="form-control" />
-                    <label class="form-label" for="Confirmacontraseña">Confirma la contraseña</label>
+                    <label class="form-label" for="Confirmacontraseña">Confirma contraseña</label>
                 </div>
 
                 <section class="RadioButtons">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="radioOpcion" id="RadioPaciente" value="paciente" checked>
+                        <input class="form-check-input" type="radio" name="radioOpcion" id="RadioPaciente"
+                            value="paciente" checked>
                         <label class="form-check-label" for="RadioPaciente">
-                            Paciente              
+                            Paciente
                         </label>
                     </div>
 
                     <div style="margin: 20px"></div>
-            
+
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="radioOpcion" id="RadioMedico" value="medico">
                         <label class="form-check-label" for="RadioMedico">
@@ -83,9 +82,11 @@
                 <br>
 
                 <!-- Register button -->
-                <button id="RegistrarBtn" type="submit" data-mdb-button-init data-mdb-ripple-init
-                    class="btn btn-primary btn-block mb-4" >Registrar</button>
+                <button id="RegistrarBtn" type="button" data-mdb-button-init data-mdb-ripple-init
+                    class="btn btn-primary btn-block mb-4" name="registro">Registrar</button>
+
             </form>
+
         </div>
     </section>
 

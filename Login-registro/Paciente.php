@@ -20,7 +20,12 @@
             <h1 id="RegistroPaciente">Registro Paciente</h1>
             <br>
             <br>
-            <form class="RegistroForm"> 
+            <form class="RegistroForm">
+                <!-- Email input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="email" id="RegistroCorreo" class="form-control" name="correo" />
+                    <label class="form-label" for="RegistroCorreo">Correo Electronico</label>
+                </div>
                 
                 <!-- Date input -->
                 <div>
