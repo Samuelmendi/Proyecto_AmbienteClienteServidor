@@ -1,15 +1,5 @@
 $(function () {
 
-    function sendRequest(action, nombre, apellido, telefono, correo, contrasena, tipo) {
-
-        fetch("../app/controller/RegistroController.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ action, nombre, apellido, telefono, correo, contrasena, tipo })
-        });
-
-    }
-
     function redirect(tipo) {
 
         if (tipo == "paciente") {
@@ -17,6 +7,16 @@ $(function () {
         } else if (tipo == "medico") {
             location.href = "Medico.php"
         }
+
+    }
+
+    function sendRequest(action, nombre, apellido, telefono, correo, contrasena, tipo) {
+
+        fetch("../app/controller/RegistroController.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ action, nombre, apellido, telefono, correo, contrasena, tipo })
+        });
 
     }
 
@@ -42,12 +42,7 @@ $(function () {
             return;
         }
 
-        redirect($tipo)
-
-
-
-
-
+        setTimeout(function(){redirect($tipo)}, 500);
 
 
     })
