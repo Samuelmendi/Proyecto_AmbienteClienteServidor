@@ -48,18 +48,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
     } elseif ($action === "medico"){
-        $correo = $data['correo'] ?? '';
+        $usuarioId = $data['usuarioId'] ?? '';
         $especialidad = $data['especialidad'] ?? '';
-        $numeroLicencia = $data['numeroLicencia'] ?? '';
-        $horarioTrabajo = $data['horarioTrabajo'] ?? '';
+        $numeroLicencia = $data['licencia'] ?? '';
+        $Exp = $data['Exp'] ?? '';
+        $horaInicio = $data['horaInicio'] ?? '';
+        $horaFinal = $data['horaFinal'] ?? '';
+        $DiasHabiles = $data['DiasHabiles'] ?? '';
 
         // Validación mínima
-        if (empty($correo) || empty($especialidad) || empty($numeroLicencia) || empty($horarioTrabajo)) {
+        if (empty($usuarioId) || empty($especialidad) || empty($numeroLicencia) || empty($Exp) || empty($horaInicio) || empty($horaFinal) || empty($DiasHabiles)) {
             echo json_encode(['success' => false, 'message' => 'Todos los campos son obligatorios para el registro de medico']);
             exit();
         } else {
             // Registrar en tabla usuarios
-            MedicoDB::add($usuarioId, $especialidad, $numeroLicencia, $horarioTrabajo);
+            MedicoDB::add($usuarioId, $especialidad, $numeroLicencia, $Exp, $horaInicio, $horaFinal, $DiasHabiles);
             exit();
         }
     }

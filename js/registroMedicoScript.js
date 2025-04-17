@@ -23,8 +23,6 @@ $(function(){
         let $horaFinal = $("#horaFin").val();
         let $DiasHabiles = $("#RegistroDiasHabiles").val();
 
-        console.log($fechaNacimiento);
-
         sendRequest("medico", $correo, $especialidad, $licencia, $Exp, $horaInicio, $horaFinal, $DiasHabiles);
 
         //setTimeout(function(){redirect()}, 200);

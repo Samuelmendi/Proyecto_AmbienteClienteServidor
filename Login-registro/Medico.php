@@ -5,7 +5,7 @@
 <head>
     <title>MediCare</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="../js/registroPacienteScript.js"></script>
+    <script src="../js/registroMedicoScript.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/stylesheet.css">
 </head>
@@ -63,7 +63,7 @@
 
                 <!-- Rango de dias que labura input -->
                 <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="email" id="" class="form-control" />
+                    <input type="email" id="RegistroDiasHabiles" class="form-control" />
                     <label class="form-label" for="RegistroDiasHabiles">Rango de Dias Habiles</label>
                 </div>
 
