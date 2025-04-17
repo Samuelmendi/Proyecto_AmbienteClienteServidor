@@ -42,7 +42,7 @@ $(function () {
             return;
         }
 
-        setTimeout(function(){redirect($tipo)}, 500);
+        setTimeout(function(){redirect($tipo)}, 300);
 
 
     })

@@ -3,18 +3,19 @@ require_once '../../config/database.php';
 
 class PacienteDB
 {
-    public static function add($usuarioId, $direccion, $seguro, $fechaNacimiento)
+    public static function add($usuarioId, $fechaNacimiento, $genero, $direccion, $seguro): bool
     {
         global $conn;
 
-        $stmt = $conn->prepare("INSERT INTO pacientes (usuario_id, direccion, seguro_medico, fecha_nacimiento) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("isss", $usuarioId, $direccion, $seguro, $fechaNacimiento);
+        $stmt = $conn->prepare("INSERT INTO pacientes (usuario_id, fecha_nacimiento, genero, direccion, numero_seguro) VALUES ( ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $usuarioId, $fechaNacimiento, $genero, $direccion, $seguro);
 
         if ($stmt->execute()) {
             return true;
         } else {
             return false;
         }
+
     }
 }
 ?>

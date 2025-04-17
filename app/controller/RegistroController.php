@@ -32,21 +32,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
     } elseif ($action === "paciente"){
-        $correo = $data['correo'] ?? '';
+        $usuarioId = $data['usuarioId'] ?? '';
         $direccion = $data['direccion'] ?? '';
         $seguro = $data['seguro'] ?? '';
+        $genero = $data['genero'] ?? '';
         $fechaNacimiento = $data['fechaNacimiento'] ?? '';
 
         // Validación mínima
-        if (empty($correo) || empty($direccion) || empty($seguro) || empty($fechaNacimiento)) {
+        if (empty($usuarioId) || empty($direccion) || empty($seguro) || empty($genero) || empty($fechaNacimiento)) {
             echo json_encode(['success' => false, 'message' => 'Todos los campos son obligatorios para el registro de paciente']);
             exit();
         } else {
             // Registrar en tabla usuarios
-            PacienteDB::add($correo, $direccion, $seguro, $fechaNacimiento);
+            PacienteDB::add($usuarioId, $fechaNacimiento, $genero, $direccion, $seguro);
             exit();
         }
-    } elseif ($action === "medico")
+    } elseif ($action === "medico"){
         $correo = $data['correo'] ?? '';
         $especialidad = $data['especialidad'] ?? '';
         $numeroLicencia = $data['numeroLicencia'] ?? '';
@@ -62,5 +63,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
     }
-
+}
 ?>

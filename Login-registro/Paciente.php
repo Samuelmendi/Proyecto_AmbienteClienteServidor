@@ -21,12 +21,13 @@
             <br>
             <br>
             <form class="RegistroForm">
+
                 <!-- Email input -->
                 <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="email" id="RegistroCorreo" class="form-control" name="correo" />
-                    <label class="form-label" for="RegistroCorreo">Correo Electronico</label>
+                    <input type="email" id="PacienteCorreo" class="form-control" name="correo" />
+                    <label class="form-label" for="RegistroCorreo">Confirmar correo Electronico</label>
                 </div>
-                
+
                 <!-- Date input -->
                 <div>
                     <input type="date" id="birthday" name="birthday">
@@ -38,7 +39,7 @@
                 <!-- genero input -->
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Genero</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
+                    <select class="form-control" id="genero">
                         <option>Masculino</option>
                         <option>Femenino</option>
                         <option>Otro</option>
