@@ -56,7 +56,7 @@
     </div>
 
     <footer>
-        <p>© 2024 MediCare. Todos los derechos reservados.</p>
+        <p>© 2025 MediCare. Todos los derechos reservados.</p>
     </footer>
 
 </body>

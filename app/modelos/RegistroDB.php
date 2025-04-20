@@ -18,7 +18,8 @@ class RegistroDB
         $stmt->bind_param("ssssss", $nombre, $apellido, $correo, $contrasena, $telefono, $tipo);
 
         if ($stmt->execute()) {
-            return 1;
+            $usuarioId = $conn->insert_id;   // <<< Aquí obtienes el ID autogenerado
+            return $usuarioId;
         } else {
             error_log("Error en execute: " . $stmt->error);
             return 0;

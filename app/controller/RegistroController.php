@@ -5,15 +5,23 @@ require_once '../modelos/MedicoDB.php';
 
 header('Content-Type: application/json');
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $data = json_decode(file_get_contents("php://input"), true);
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    echo json_encode(['success' => false, 'message' => 'Método no permitido']);
+    exit();
+}
 
-    $action = $data['action'] ?? '';
+$data = json_decode(file_get_contents("php://input"), true);
 
-    if (!$data) {
-        echo json_encode(['success' => false, 'message' => 'No se recibieron datos']);
-        exit();
-    } elseif ($action === "usuario") {
+if (!$data) {
+    echo json_encode(['success' => false, 'message' => 'No se recibieron datos']);
+    exit();
+}
+
+$action = $data['action'] ?? '';
+
+switch ($action) {
+
+    case "usuario":
         // Datos generales
         $nombre = $data['nombre'] ?? '';
         $apellido = $data['apellido'] ?? '';
@@ -22,32 +30,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $contrasena = $data['contrasena'] ?? '';
         $tipo = $data['tipo'] ?? '';
 
-        // Validación mínima
+        // Validación
         if (empty($nombre) || empty($apellido) || empty($telefono) || empty($correo) || empty($contrasena) || empty($tipo)) {
-            echo json_encode(['success' => false, 'message' => 'Todos los campos son obligatorios para la creacion de usuario']);
-            exit();
-        } else {
-            // Registrar en tabla usuarios
-            RegistroDB::add($nombre, $apellido, $telefono, $correo, $contrasena, $tipo);
+            echo json_encode(['success' => false, 'message' => 'Todos los campos son obligatorios para la creación de usuario']);
             exit();
         }
-    } elseif ($action === "paciente"){
-        $usuarioId = $data['usuarioId'] ?? '';
-        $direccion = $data['direccion'] ?? '';
-        $seguro = $data['seguro'] ?? '';
-        $genero = $data['genero'] ?? '';
-        $fechaNacimiento = $data['fechaNacimiento'] ?? '';
 
-        // Validación mínima
-        if (empty($usuarioId) || empty($direccion) || empty($seguro) || empty($genero) || empty($fechaNacimiento)) {
+        // Encriptar contraseña
+        $contrasenaHash = password_hash($contrasena, PASSWORD_DEFAULT);
+
+        // Registrar en tabla usuarios
+        $usuarioId = RegistroDB::add($nombre, $apellido, $telefono, $correo, $contrasenaHash, $tipo);
+
+        if ($usuarioId) {
+            echo json_encode(['success' => true, 'message' => 'Usuario registrado correctamente', 'usuarioId' => $usuarioId]);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Error al registrar usuario']);
+        }
+        break;
+
+    case "paciente":
+        $usuarioId = $data['usuarioId'] ?? '';
+        $fechaNacimiento = $data['fechaNacimiento'] ?? '';
+        $direccion = $data['direccion'] ?? '';
+        $genero = $data['genero'] ?? '';
+
+        if (empty($usuarioId) || empty($fechaNacimiento) || empty($direccion) || empty($genero)) {
             echo json_encode(['success' => false, 'message' => 'Todos los campos son obligatorios para el registro de paciente']);
             exit();
-        } else {
-            // Registrar en tabla usuarios
-            PacienteDB::add($usuarioId, $fechaNacimiento, $genero, $direccion, $seguro);
-            exit();
         }
-    } elseif ($action === "medico"){
+
+        if (PacienteDB::add($usuarioId, $fechaNacimiento, $direccion, $genero)) {
+            echo json_encode(['success' => true, 'message' => 'Paciente registrado correctamente']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Error al registrar paciente']);
+        }
+        break;
+
+    case "medico":
         $usuarioId = $data['usuarioId'] ?? '';
         $especialidad = $data['especialidad'] ?? '';
         $numeroLicencia = $data['licencia'] ?? '';
@@ -56,15 +76,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $horaFinal = $data['horaFinal'] ?? '';
         $DiasHabiles = $data['DiasHabiles'] ?? '';
 
-        // Validación mínima
         if (empty($usuarioId) || empty($especialidad) || empty($numeroLicencia) || empty($Exp) || empty($horaInicio) || empty($horaFinal) || empty($DiasHabiles)) {
-            echo json_encode(['success' => false, 'message' => 'Todos los campos son obligatorios para el registro de medico']);
-            exit();
-        } else {
-            // Registrar en tabla usuarios
-            MedicoDB::add($usuarioId, $especialidad, $numeroLicencia, $Exp, $horaInicio, $horaFinal, $DiasHabiles);
+            echo json_encode(['success' => false, 'message' => 'Todos los campos son obligatorios para el registro de médico']);
             exit();
         }
-    }
+
+        if (MedicoDB::add($usuarioId, $especialidad, $numeroLicencia, $Exp, $horaInicio, $horaFinal, $DiasHabiles)) {
+            echo json_encode(['success' => true, 'message' => 'Médico registrado correctamente']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Error al registrar médico']);
+        }
+        break;
+
+    default:
+        echo json_encode(['success' => false, 'message' => 'Acción no válida']);
 }
 ?>
