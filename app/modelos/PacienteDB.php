@@ -10,7 +10,7 @@ class PacienteDB {
             return false;
         }
 
-        $stmt = $conn->prepare("INSERT INTO pacientes (usuario_id, fecha_nacimiento, direccion, genero, numero_seguro, historial_medico) 
+        $stmt = $conn->prepare("INSERT INTO pacientes (usuario_id, fecha_nacimiento, direccion, genero, numero_seguro, historial) 
                                 VALUES (?, ?, ?, ?, ?, ?)");
         
         if (!$stmt) {

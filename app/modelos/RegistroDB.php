@@ -5,21 +5,24 @@ class RegistroDB {
     public static function add($nombre, $apellido, $telefono, $correo, $contrasenaHash, $tipo) {
         global $conn;
 
-        $fechaRegistro = date('Y-m-d');
-        $activo = 1; // Por defecto, el usuario está activo
+        if (!$conn) {
+            error_log("Error: No database connection in RegistroDB::add");
+            return false;
+        }
 
-        $stmt = $conn->prepare("INSERT INTO usuarios (nombre, apellidos, telefono, correo, contrasena, fecha_registro, tipo, activo) 
-                                VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $fechaRegistro = date('Y-m-d');
+        $stmt = $conn->prepare("INSERT INTO usuarios (nombre, apellidos, telefono, correo, contrasena, fecha_registro, tipo) 
+                                VALUES (?, ?, ?, ?, ?, ?, ?)");
         
         if (!$stmt) {
             error_log("Error en prepare de RegistroDB::add - " . $conn->error);
             return false;
         }
 
-        $stmt->bind_param("sssssssi", $nombre, $apellido, $telefono, $correo, $contrasenaHash, $fechaRegistro, $tipo, $activo);
+        $stmt->bind_param("sssssss", $nombre, $apellido, $telefono, $correo, $contrasenaHash, $fechaRegistro, $tipo);
 
         if ($stmt->execute()) {
-            return $conn->insert_id; // Devuelve el ID del usuario recién creado
+            return $conn->insert_id;
         } else {
             error_log("Error en execute de RegistroDB::add - " . $stmt->error);
             return false;
