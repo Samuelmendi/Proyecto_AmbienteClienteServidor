@@ -2,7 +2,7 @@
 $host = 'localhost';
 $dbname = 'medicare';
 $username = 'root';
-$password = ' ';
+$password = '1234';
 
 
 $conn = new mysqli($host, $username, $password, $dbname);

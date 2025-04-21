@@ -1,17 +1,25 @@
 /* ---------- Estilos Generales ---------- */
-body {
-    font-family: 'Segoe UI', 'Poppins', sans-serif;
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #eef3f7; /* Tono médico claro */
+    font-family: 'Segoe UI', 'Poppins', sans-serif;
+    background-color: #f4f7fa;
     color: #2c3e50;
+    display: flex;
+    flex-direction: column;
     line-height: 1.6;
 }
 
 /* ---------- Encabezados ---------- */
 h1, h2 {
     font-weight: 700;
-    color: #2a4365; /* Azul serio */
+    color: #1f3b4d;
+}
+
+.container > h2 {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 /* ---------- Header ---------- */
@@ -19,7 +27,7 @@ h1, h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(90deg, #2a4365, #3182ce);
+    background-color: #1f3b4d;
     padding: 20px 40px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     flex-wrap: wrap;
@@ -32,10 +40,9 @@ h1, h2 {
 }
 
 #LogoMedicare {
-    height: 120px; /* Aumenté el tamaño del logo a 120px */
+    height: 100px;
     object-fit: contain;
     border-radius: 8px;
-    filter: contrast(1.2); /* Mantengo el contraste */
 }
 
 /* ---------- Login y Registro ---------- */
@@ -43,7 +50,6 @@ h1, h2 {
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
-    justify-content: center;
 }
 
 #Login, #Registro {
@@ -54,13 +60,13 @@ h1, h2 {
 }
 
 #Login:hover, #Registro:hover {
-    color: #cce4ff;
+    color: #00b934;
 }
 
 /* ---------- Navegación ---------- */
 nav {
-    background-color: #63b3ed; /* Azul más claro */
-    padding: 10px 0;
+    background-color: #0f2e3e;
+    padding: 12px 0;
 }
 
 nav ul {
@@ -69,21 +75,40 @@ nav ul {
     justify-content: center;
     margin: 0;
     padding: 0;
-    gap: 20px;
+    gap: 25px;
 }
 
 nav ul li a {
-    color: white;
-    font-weight: 500;
+    color: #ffffff;
     text-decoration: none;
-    padding: 8px 15px;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 8px;
     transition: all 0.3s ease;
 }
 
 nav ul li a:hover {
-    background-color: #2b6cb0;
+    background-color: #00b934;
     transform: scale(1.05);
+}
+
+/* ---------- Hero Section ---------- */
+#hero {
+    background-image: url('../assets/img/bg-medicare.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 30px;
+    border-radius: 10px;
 }
 
 /* ---------- Contenedor Principal ---------- */
@@ -92,26 +117,66 @@ nav ul li a:hover {
     margin: 40px auto;
     padding: 30px;
     background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    flex: 1;
 }
 
 /* ---------- Secciones ---------- */
 .view-section {
     margin-bottom: 30px;
     padding: 25px;
-    background-color: #f7fafc;
-    border-left: 6px solid #4299e1;
-    border-radius: 10px;
+    background-color: #eaf7ee;
+    border-left: 6px solid #00b934;
+    border-radius: 12px;
     transition: transform 0.3s;
+}
+
+.view-section h2 {
+    color: #00a82f;
 }
 
 .view-section:hover {
     transform: translateY(-3px);
 }
 
-.view-section h2 {
-    color: #2b6cb0;
+/* ---------- Características ---------- */
+#Caracteristicas {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
+#Caracteristicas ul {
+    flex: 1 1 300px;
+    list-style: disc inside;
+    padding-left: 20px;
+}
+
+#Caracteristicas li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+/* ---------- Botones ---------- */
+.btn {
+    background: #00b934;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    background: #009728;
+    transform: scale(1.05);
 }
 
 /* ---------- Formularios ---------- */
@@ -137,48 +202,17 @@ nav ul li a:hover {
 
 .form-group input:focus,
 .form-group select:focus {
-    outline: none;
-    border-color: #3182ce;
-    box-shadow: 0 0 6px rgba(49, 130, 206, 0.3);
-}
-
-/* ---------- Error Messages ---------- */
-#errorMessage {
-    background-color: #f9e1e1;
-    color: #e53e3e;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-/* ---------- Botones ---------- */
-.btn {
-    background: linear-gradient(90deg, #3182ce, #2b6cb0);
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.btn:hover {
-    transform: scale(1.05);
+    border-color: #00b934;
+    box-shadow: 0 0 6px rgba(0, 185, 52, 0.3);
 }
 
 /* ---------- Footer ---------- */
 footer {
-    background: #2a4365;
+    background: #1f3b4d;
     color: #e2e8f0;
     text-align: center;
     padding: 20px;
     font-size: 14px;
-}
-
-/* ---------- Login Section ---------- */
-#LogInSection {
-    padding: 50px 20px;
 }
 
 /* ---------- Tablas ---------- */
@@ -192,22 +226,24 @@ table {
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-th, td {
-    padding: 12px;
-    border-bottom: 1px solid #e2e8f0;
-}
-
 th {
-    background-color: #2b6cb0;
+    background-color: #00a82f;
     color: white;
     text-transform: uppercase;
     letter-spacing: 1px;
+    padding: 12px;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #e2e8f0;
 }
 
 tr:hover {
     background-color: #f1f5f9;
 }
 
+/* ---------- Botones en tablas ---------- */
 button {
     padding: 6px 12px;
     border: none;
@@ -217,14 +253,14 @@ button {
 }
 
 button:first-child {
-    background-color: #38a169; /* Verde */
+    background-color: #00b934;
 }
 
 button:last-child {
-    background-color: #e53e3e; /* Rojo */
+    background-color: #e53e3e;
 }
 
-/* ---------- Responsive Design ---------- */
+/* ---------- Responsive ---------- */
 @media (max-width: 768px) {
     #WebHeader {
         flex-direction: column;
@@ -232,8 +268,8 @@ button:last-child {
     }
 
     #loginout {
-        justify-content: center;
         margin-top: 15px;
+        justify-content: center;
     }
 
     nav ul {
@@ -246,12 +282,17 @@ button:last-child {
         padding: 20px;
     }
 
-    .view-section {
-        padding: 20px;
+    #Caracteristicas {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
     }
 
     #LogoMedicare {
-        height: 80px; 
-        filter: contrast(1.2); 
-}
+        height: 80px;
+    }
+
+    #hero {
+        min-height: 300px;
+    }
 }
