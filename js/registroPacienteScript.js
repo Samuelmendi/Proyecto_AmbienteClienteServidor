@@ -1,9 +1,15 @@
 $(function () {
     console.log("registroPacienteScript.js loaded successfully");
+    console.log("jQuery version:", $.fn.jquery); // Verify jQuery is loaded
 
     function showError(message) {
         console.log("Showing error: " + message);
-        $("#errorMessage").text(message).show();
+        const $errorMessage = $("#errorMessage");
+        if ($errorMessage.length) {
+            $errorMessage.text(message).show();
+        } else {
+            console.error("errorMessage element not found in the DOM");
+        }
     }
 
     async function sendRequest(action, usuarioId, fechaNacimiento, direccion, genero, numeroSeguro, historialMedico) {
@@ -79,12 +85,18 @@ $(function () {
         if (!$registroSeguro.length) console.error("RegistroSeguro not found in the DOM");
         if (!$historialMedico.length) console.error("historialMedico not found in the DOM");
 
+        // Stop if critical elements are missing
+        if (!$pacienteCorreo.length || !$birthday.length || !$genero.length || !$registroDireccion.length || !$registroSeguro.length) {
+            showError("Error: Uno o más campos del formulario no se encontraron. Por favor, revisa la página.");
+            return;
+        }
+
         // Safely get values with fallback to empty string
-        const correo = $pacienteCorreo.length ? $pacienteCorreo.val().trim() : "";
-        const fechaNacimiento = $birthday.length ? $birthday.val().trim() : "";
-        const genero = $genero.length ? $genero.val().trim() : "";
-        const direccion = $registroDireccion.length ? $registroDireccion.val().trim() : "";
-        const numeroSeguro = $registroSeguro.length ? $registroSeguro.val().trim() : "";
+        const correo = $pacienteCorreo.val().trim();
+        const fechaNacimiento = $birthday.val().trim();
+        const genero = $genero.val().trim();
+        const direccion = $registroDireccion.val().trim();
+        const numeroSeguro = $registroSeguro.val().trim();
         const historialMedico = $historialMedico.length ? $historialMedico.val().trim() : ""; // Optional field
 
         console.log("Form data:", { correo, fechaNacimiento, genero, direccion, numeroSeguro, historialMedico });

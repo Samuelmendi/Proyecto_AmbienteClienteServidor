@@ -1,6 +1,7 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+// Suppress errors in the response (log them instead)
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
 error_reporting(E_ALL);
 
 require_once '../modelos/RegistroDB.php';
@@ -73,7 +74,7 @@ switch ($action) {
         $direccion = $data['direccion'] ?? '';
         $genero = $data['genero'] ?? '';
         $numeroSeguro = $data['numeroSeguro'] ?? '';
-        $historialMedico = $data['historialMedico'] ?? ''; // Now optional
+        $historialMedico = $data['historialMedico'] ?? '';
 
         error_log("Datos de paciente: " . print_r($data, true));
 
@@ -93,7 +94,7 @@ switch ($action) {
         break;
 
     case "medico":
-        $usuarioId = $data['usuarioId'] ?? '';
+        $usuarioId = (int)($data['usuarioId'] ?? 0);
         $especialidad = $data['especialidad'] ?? '';
         $numeroLicencia = $data['licencia'] ?? '';
         $anosExperiencia = $data['Exp'] ?? '';
@@ -104,7 +105,7 @@ switch ($action) {
 
         error_log("Datos de médico: " . print_r($data, true));
 
-        if (empty($usuarioId) || empty($especialidad) || empty($numeroLicencia) || empty($anosExperiencia) || empty($horaInicio) || empty($horaFinal) || empty($diasLaborables)) {
+        if ($usuarioId <= 0 || empty($especialidad) || empty($numeroLicencia) || empty($anosExperiencia) || empty($horaInicio) || empty($horaFinal) || empty($diasLaborables)) {
             echo json_encode(['success' => false, 'message' => 'Todos los campos son obligatorios para el registro de médico']);
             exit();
         }

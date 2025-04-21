@@ -12,8 +12,8 @@
 
 <body>
     <div id="WebHeader">
-    <a href="index.php" id="LogoContainer">
-            <img src="assets/img/logo.png" alt="MediCare Logo" id="LogoMedicare">
+    <a href="../index.php" id="LogoContainer">
+            <img src="../assets/img/logo.png" alt="MediCare Logo" id="LogoMedicare">
         </a>
     </div>
 
