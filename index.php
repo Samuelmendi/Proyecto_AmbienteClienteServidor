@@ -5,17 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MediCare</title>
-    <link rel="stylesheet" href="css/stylesheet.css">
+    
+    <link rel="stylesheet" href="public/css/stylesheet.css">
 </head>
 
 <body>
 <div id="WebHeader">
 <a href="index.php" id="LogoContainer">
-    <img src="assets\img\logo.png" alt="MediCare Logo" id="LogoMedicare">
+    <img src="" alt="MediCare Logo" id="LogoMedicare">
 </a>
     <div id="loginout">
-        <a href="Login-registro/Log-in.php" id="Login">Log-in</a>
-        <a href="Login-registro/registro.php" id="Registro">Registro</a>
+        <a href="views/Log-in.php" id="Login">Log in</a>
+        <a href="views/registro.php" id="Registro">Registro</a>
     </div>
 </div>
 

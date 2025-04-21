@@ -142,6 +142,15 @@ nav ul li a:hover {
     box-shadow: 0 0 6px rgba(49, 130, 206, 0.3);
 }
 
+/* ---------- Error Messages ---------- */
+#errorMessage {
+    background-color: #f9e1e1;
+    color: #e53e3e;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
 /* ---------- Botones ---------- */
 .btn {
     background: linear-gradient(90deg, #3182ce, #2b6cb0);
@@ -242,7 +251,7 @@ button:last-child {
     }
 
     #LogoMedicare {
-        height: 80px; /* Ajusté el tamaño para pantallas pequeñas a 80px */
-        filter: contrast(1.2); /* Mantengo el contraste */
-    }
+        height: 80px; 
+        filter: contrast(1.2); 
+}
 }

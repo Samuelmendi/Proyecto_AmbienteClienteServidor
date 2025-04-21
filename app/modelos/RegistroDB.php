@@ -1,28 +1,28 @@
 <?php
 require_once '../../config/database.php';
 
-class RegistroDB
-{
-    public static function add($nombre, $apellido, $telefono, $correo, $password, $tipo)
-    {
+class RegistroDB {
+    public static function add($nombre, $apellido, $telefono, $correo, $contrasenaHash, $tipo) {
         global $conn;
 
-        $contrasena = password_hash($password, PASSWORD_BCRYPT);
+        $fechaRegistro = date('Y-m-d');
+        $activo = 1; // Por defecto, el usuario está activo
 
-        $stmt = $conn->prepare("INSERT INTO usuarios (nombre, apellidos, correo, contrasena, telefono, tipo) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO usuarios (nombre, apellidos, telefono, correo, contrasena, fecha_registro, tipo, activo) 
+                                VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        
         if (!$stmt) {
-            error_log("Error en prepare: " . $conn->error);
-            return 0;
+            error_log("Error en prepare de RegistroDB::add - " . $conn->error);
+            return false;
         }
 
-        $stmt->bind_param("ssssss", $nombre, $apellido, $correo, $contrasena, $telefono, $tipo);
+        $stmt->bind_param("sssssssi", $nombre, $apellido, $telefono, $correo, $contrasenaHash, $fechaRegistro, $tipo, $activo);
 
         if ($stmt->execute()) {
-            $usuarioId = $conn->insert_id;   // <<< Aquí obtienes el ID autogenerado
-            return $usuarioId;
+            return $conn->insert_id; // Devuelve el ID del usuario recién creado
         } else {
-            error_log("Error en execute: " . $stmt->error);
-            return 0;
+            error_log("Error en execute de RegistroDB::add - " . $stmt->error);
+            return false;
         }
     }
 }
