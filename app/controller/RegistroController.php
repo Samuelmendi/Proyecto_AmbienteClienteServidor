@@ -7,8 +7,7 @@ require_once '../modelos/RegistroDB.php';
 require_once '../modelos/PacienteDB.php';
 require_once '../modelos/MedicoDB.php';
 
-header('Content-Type: application/json');
-// Allow CORS if the front end is on a different domain (adjust as needed)
+header('Content-Type: application/json; charset=UTF-8');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
@@ -19,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 $data = json_decode(file_get_contents("php://input"), true);
+error_log("Datos recibidos en RegistroController.php: " . print_r($data, true));
 
 if (!$data) {
     echo json_encode(['success' => false, 'message' => 'No se recibieron datos']);
@@ -26,10 +26,10 @@ if (!$data) {
 }
 
 $action = $data['action'] ?? '';
+error_log("Acción recibida: " . $action);
 
 switch ($action) {
     case "usuario":
-        // Datos generales
         $nombre = $data['nombre'] ?? '';
         $apellido = $data['apellido'] ?? '';
         $telefono = $data['telefono'] ?? '';
@@ -37,7 +37,6 @@ switch ($action) {
         $contrasena = $data['contrasena'] ?? '';
         $tipo = $data['tipo'] ?? '';
 
-        // Validación
         if (empty($nombre) || empty($apellido) || empty($telefono) || empty($correo) || empty($contrasena) || empty($tipo)) {
             echo json_encode(['success' => false, 'message' => 'Todos los campos son obligatorios para la creación de usuario']);
             exit();
@@ -53,10 +52,7 @@ switch ($action) {
             exit();
         }
 
-        // Encriptar contraseña
         $contrasenaHash = password_hash($contrasena, PASSWORD_DEFAULT);
-
-        // Registrar en tabla usuarios
         $usuarioId = RegistroDB::add($nombre, $apellido, $telefono, $correo, $contrasenaHash, $tipo);
 
         if ($usuarioId) {
@@ -72,19 +68,24 @@ switch ($action) {
         break;
 
     case "paciente":
-        $usuarioId = $data['usuarioId'] ?? '';
+        $usuarioId = (int)($data['usuarioId'] ?? 0);
         $fechaNacimiento = $data['fechaNacimiento'] ?? '';
         $direccion = $data['direccion'] ?? '';
         $genero = $data['genero'] ?? '';
         $numeroSeguro = $data['numeroSeguro'] ?? '';
-        $historialMedico = $data['historialMedico'] ?? '';
+        $historialMedico = $data['historialMedico'] ?? ''; // Now optional
 
-        if (empty($usuarioId) || empty($fechaNacimiento) || empty($direccion) || empty($genero) || empty($numeroSeguro) || empty($historialMedico)) {
-            echo json_encode(['success' => false, 'message' => 'Todos los campos son obligatorios para el registro de paciente']);
+        error_log("Datos de paciente: " . print_r($data, true));
+
+        if ($usuarioId <= 0 || empty($fechaNacimiento) || empty($direccion) || empty($genero) || empty($numeroSeguro)) {
+            echo json_encode(['success' => false, 'message' => 'Todos los campos obligatorios para el registro de paciente deben estar completos']);
             exit();
         }
 
-        if (PacienteDB::add($usuarioId, $fechaNacimiento, $direccion, $genero, $numeroSeguro, $historialMedico)) {
+        $result = PacienteDB::add($usuarioId, $fechaNacimiento, $direccion, $genero, $numeroSeguro, $historialMedico);
+        error_log("Resultado de PacienteDB::add: " . ($result ? 'true' : 'false'));
+
+        if ($result) {
             echo json_encode(['success' => true, 'message' => 'Paciente registrado correctamente']);
         } else {
             echo json_encode(['success' => false, 'message' => 'Error al registrar paciente']);
@@ -95,18 +96,23 @@ switch ($action) {
         $usuarioId = $data['usuarioId'] ?? '';
         $especialidad = $data['especialidad'] ?? '';
         $numeroLicencia = $data['licencia'] ?? '';
-        $anosExperiencia = $data['Exp'] ?? ''; // Renombrado para consistencia
+        $anosExperiencia = $data['Exp'] ?? '';
         $horaInicio = $data['horaInicio'] ?? '';
         $horaFinal = $data['horaFinal'] ?? '';
-        $diasLaborables = $data['DiasHabiles'] ?? ''; // Renombrado para consistencia
+        $diasLaborables = $data['DiasHabiles'] ?? '';
         $biografia = $data['biografia'] ?? '';
+
+        error_log("Datos de médico: " . print_r($data, true));
 
         if (empty($usuarioId) || empty($especialidad) || empty($numeroLicencia) || empty($anosExperiencia) || empty($horaInicio) || empty($horaFinal) || empty($diasLaborables)) {
             echo json_encode(['success' => false, 'message' => 'Todos los campos son obligatorios para el registro de médico']);
             exit();
         }
 
-        if (MedicoDB::add($usuarioId, $especialidad, $numeroLicencia, $anosExperiencia, $horaInicio, $horaFinal, $diasLaborables, $biografia)) {
+        $result = MedicoDB::add($usuarioId, $especialidad, $numeroLicencia, $anosExperiencia, $horaInicio, $horaFinal, $diasLaborables, $biografia);
+        error_log("Resultado de MedicoDB::add: " . ($result ? 'true' : 'false'));
+
+        if ($result) {
             echo json_encode(['success' => true, 'message' => 'Médico registrado correctamente']);
         } else {
             echo json_encode(['success' => false, 'message' => 'Error al registrar médico']);

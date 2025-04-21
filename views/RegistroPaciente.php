@@ -12,7 +12,9 @@
 
 <body>
     <div id="WebHeader">
-        <h1><a href="../index.php" id="TitulodePagina">MediCare</a></h1>
+    <a href="index.php" id="LogoContainer">
+            <img src="assets/img/logo.png" alt="MediCare Logo" id="LogoMedicare">
+        </a>
     </div>
 
     <section class="vh-90" style="background-color: #eee;" id="LogInSection">

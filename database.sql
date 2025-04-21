@@ -8,12 +8,12 @@ CREATE TABLE usuarios (
   usuario_id INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(100) NOT NULL,
   apellidos VARCHAR(100) NOT NULL,
-  correo VARCHAR(100) NOT NULL,
-  contrasena VARCHAR(100) NOT NULL,
-  telefono VARCHAR(100) NOT NULL,
+  correo VARCHAR(100) NOT NULL UNIQUE,
+  contrasena VARCHAR(255) NOT NULL,
+  telefono VARCHAR(20) NOT NULL,
   fecha_registro DATE NOT NULL,
   tipo ENUM('paciente','medico','admin') NOT NULL,
-  activo TINYINT(1) NOT NULL,
+  activo TINYINT(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (usuario_id)
 );
 
@@ -22,12 +22,12 @@ CREATE TABLE pacientes (
   paciente_id INT NOT NULL AUTO_INCREMENT,
   usuario_id INT NOT NULL,
   fecha_nacimiento DATE NOT NULL,
-  genero VARCHAR(30) NOT NULL,
+  genero ENUM('masculino','femenino','otro') NOT NULL,
   direccion VARCHAR(500) NOT NULL,
   numero_seguro VARCHAR(100) NOT NULL,
-  historial_medico VARCHAR(5000) NOT NULL,
+  historial TEXT NOT NULL,
   PRIMARY KEY (paciente_id),
-  FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
+  FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id) ON DELETE CASCADE
 );
 
 -- Tabla medicos
@@ -35,14 +35,14 @@ CREATE TABLE medicos (
   medico_id INT NOT NULL AUTO_INCREMENT,
   usuario_id INT NOT NULL,
   especialidad VARCHAR(100) NOT NULL,
-  biografia VARCHAR(5000) NOT NULL,
+  biografia TEXT NOT NULL,
   numero_licencia VARCHAR(100) NOT NULL,
-  anos_experiencia INT NOT NULL,
+  anos_experiencia INT UNSIGNED NOT NULL,
   horario_inicio TIME NOT NULL,
   horario_fin TIME NOT NULL,
-  dias_laborables VARCHAR(30) NOT NULL,
+  dias_laborables VARCHAR(100) NOT NULL,
   PRIMARY KEY (medico_id),
-  FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
+  FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id) ON DELETE CASCADE
 );
 
 -- Tabla especialidades
@@ -59,8 +59,8 @@ CREATE TABLE medico_especialidad (
   medico_id INT NOT NULL,
   especialidad_id INT NOT NULL,
   PRIMARY KEY (medico_especialidad_id),
-  FOREIGN KEY (medico_id) REFERENCES medicos(medico_id),
-  FOREIGN KEY (especialidad_id) REFERENCES especialidades(especialidad_id)
+  FOREIGN KEY (medico_id) REFERENCES medicos(medico_id) ON DELETE CASCADE,
+  FOREIGN KEY (especialidad_id) REFERENCES especialidades(especialidad_id) ON DELETE CASCADE
 );
 
 -- Tabla citas
@@ -69,27 +69,27 @@ CREATE TABLE citas (
   paciente_id INT NOT NULL,
   medico_id INT NOT NULL,
   fecha_hora DATETIME NOT NULL,
-  estado ENUM('pendiente','confirmada','cancelada','completada') NOT NULL,
-  motivo VARCHAR(5000) NOT NULL,
-  notas VARCHAR(5000) NOT NULL,
+  estado ENUM('pendiente','confirmada','cancelada','completada') NOT NULL DEFAULT 'pendiente',
+  motivo TEXT NOT NULL,
+  notas TEXT,
   fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (cita_id),
-  FOREIGN KEY (paciente_id) REFERENCES pacientes(paciente_id),
-  FOREIGN KEY (medico_id) REFERENCES medicos(medico_id)
+  FOREIGN KEY (paciente_id) REFERENCES pacientes(paciente_id) ON DELETE CASCADE,
+  FOREIGN KEY (medico_id) REFERENCES medicos(medico_id) ON DELETE CASCADE
 );
 
--- Tabla historial_medico
-CREATE TABLE historial_medico (
+-- Tabla historial_paciente
+CREATE TABLE historial_paciente (
   historial_id INT NOT NULL AUTO_INCREMENT,
   paciente_id INT NOT NULL,
   medico_id INT NOT NULL,
   fecha DATE NOT NULL,
-  diagnostico VARCHAR(5000) NOT NULL,
-  tratamiento VARCHAR(5000) NOT NULL,
-  observaciones VARCHAR(5000) NOT NULL,
+  diagnostico TEXT NOT NULL,
+  tratamiento TEXT NOT NULL,
+  observaciones TEXT,
   PRIMARY KEY (historial_id),
-  FOREIGN KEY (paciente_id) REFERENCES pacientes(paciente_id),
-  FOREIGN KEY (medico_id) REFERENCES medicos(medico_id)
+  FOREIGN KEY (paciente_id) REFERENCES pacientes(paciente_id) ON DELETE CASCADE,
+  FOREIGN KEY (medico_id) REFERENCES medicos(medico_id) ON DELETE CASCADE
 );
 
 -- Tabla horarios_disponibles
@@ -99,20 +99,7 @@ CREATE TABLE horarios_disponibles (
   fecha DATE NOT NULL,
   hora_inicio TIME NOT NULL,
   hora_fin TIME NOT NULL,
-  disponible TINYINT(1) NOT NULL,
+  disponible TINYINT(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (horario_id),
-  FOREIGN KEY (medico_id) REFERENCES medicos(medico_id)
-);
-
--- Tabla pagos
-CREATE TABLE pagos (
-  pago_id INT NOT NULL AUTO_INCREMENT,
-  cita_id INT NOT NULL,
-  monto DECIMAL(10,2) NOT NULL,
-  metodo_pago ENUM('efectivo','tarjeta','transferencia') NOT NULL,
-  fecha_pago DATETIME NOT NULL,
-  completado TINYINT(1) NOT NULL,
-  referencia VARCHAR(100) NOT NULL,
-  PRIMARY KEY (pago_id),
-  FOREIGN KEY (cita_id) REFERENCES citas(cita_id)
+  FOREIGN KEY (medico_id) REFERENCES medicos(medico_id) ON DELETE CASCADE
 );

@@ -8,10 +8,12 @@
 
 <body>
     <div id="WebHeader">
-        <h1>MediCare</h1>
+    <a href="../index.php" id="LogoContainer">
+    <img src="../assets/img/logo.png" alt="MediCare Logo" id="LogoMedicare">
+        </a>
         <div id="loginout">
-            <a href="../Login-registro/Log-in.php" id="Login">Log-in</a>
-            <a href="../Login-registro/registro.php" id="Registro">Registro</a>
+            <a href="../Login-registro/Log-in.php" id="Login">Cerrar Sesion</a>
+            
         </div>
     </div>
 
