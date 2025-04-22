@@ -1,5 +1,5 @@
 <?php
-require_once '../../config/database.php';
+require_once __DIR__ . '/../../config/database.php';
 
 class UsuarioDB {
     public static function create($nombre, $apellidos, $correo, $contrasena, $telefono, $tipo) {

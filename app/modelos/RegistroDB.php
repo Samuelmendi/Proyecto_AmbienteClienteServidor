@@ -1,5 +1,5 @@
 <?php
-require_once '../../config/database.php';
+require_once __DIR__ . '/../../config/database.php';
 
 class RegistroDB {
     public static function add($nombre, $apellido, $telefono, $correo, $contrasenaHash, $tipo) {
