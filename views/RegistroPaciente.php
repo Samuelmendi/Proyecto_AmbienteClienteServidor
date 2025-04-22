@@ -3,7 +3,9 @@
 <html>
 
 <head>
-    <title>MediCare</title>
+    <title>MediCare - Registro Paciente</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="../js/registroPacienteScript.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,22 +14,26 @@
 
 <body>
     <div id="WebHeader">
-    <a href="../index.php" id="LogoContainer">
+        <a href="../index.php" id="LogoContainer">
             <img src="../assets/img/logo.png" alt="MediCare Logo" id="LogoMedicare">
         </a>
+        <div id="loginout">
+            <a href="Log-in.php" id="Login">Log-in</a>
+        </div>
     </div>
 
     <section class="vh-90" style="background-color: #eee;" id="LogInSection">
         <div class="container h-100 p-md-5">
             <h1 id="RegistroPaciente">Registro Paciente</h1>
             <br>
+            <div id="errorMessage" style="display:none; color: red;"></div>
             <br>
             <form class="RegistroForm">
 
                 <!-- Email input -->
                 <div data-mdb-input-init class="form-outline mb-4">
                     <input type="email" id="PacienteCorreo" class="form-control" name="correo" />
-                    <label class="form-label" for="RegistroCorreo">Confirmar correo Electronico</label>
+                    <label class="form-label" for="PacienteCorreo">Confirmar correo Electrónico</label>
                 </div>
 
                 <!-- Date input -->
@@ -40,7 +46,7 @@
 
                 <!-- genero input -->
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Genero</label>
+                    <label for="genero">Género</label>
                     <select class="form-control" id="genero">
                         <option>Masculino</option>
                         <option>Femenino</option>
@@ -53,14 +59,20 @@
 
                 <!-- Direccion input -->
                 <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="email" id="RegistroDireccion" class="form-control" />
-                    <label class="form-label" for="correo">Direccion</label>
+                    <input type="text" id="RegistroDireccion" class="form-control" />
+                    <label class="form-label" for="RegistroDireccion">Dirección</label>
                 </div>
 
                 <!-- Numero de seguro input -->
                 <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="email" id="RegistroSeguro" class="form-control" />
-                    <label class="form-label" for="correo">Numero de seguro</label>
+                    <input type="text" id="RegistroSeguro" class="form-control" />
+                    <label class="form-label" for="RegistroSeguro">Número de seguro</label>
+                </div>
+
+                <!-- Historial médico - campo opcional -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <textarea id="historialMedico" class="form-control"></textarea>
+                    <label class="form-label" for="historialMedico">Historial médico (opcional)</label>
                 </div>
 
                 <!-- Register button -->
